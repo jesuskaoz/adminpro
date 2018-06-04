@@ -6,7 +6,7 @@
         <span class="mdi mdi-minus"></span>
     </button>
     </span>
-    <input type="text" class="form-control" name="porcentaje" [(ngModel)]="porcentaje">
+    <input #txtProgress type="number" class="form-control" name="porcentaje" [(ngModel)]="porcentaje" (ngModelChange)="onChanges($event)" min="1" max="100">
     <span class="input-group-btn">
       <button class="btn btn-secondary" type="button" (click)='incrementar(+5)'>
           <span class="mdi mdi-plus"></span>
