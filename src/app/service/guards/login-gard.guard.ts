@@ -12,10 +12,10 @@ export class LoginGardGuard implements CanActivate {
 
   canActivate() {
     if (this._usuarioService.loginStatus()) {
-      console.log('Estatus: autentificado');
+      // console.log('Estatus: autentificado');
       return true;
     } else {
-      console.log('Estatus: sin autentificar');
+      // console.log('Estatus: sin autentificar');
       this.router.navigate(['/login']);
       return false;
     }
