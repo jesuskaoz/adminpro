@@ -1,0 +1,67 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input #input (keyup)="buscarHospital(input.value)" type="text" class="form-control" placeholder="Buscar hospitales...">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="cargarHosp">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <span class="fa fa-refresh fa-spin fa-2x"></span>
+            <span>Espere por favor!</span>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body" align="right">
+                <button (click)="modalGuardar()" class="btn btn-rounded btn-primary"><span class="fa fa-plus"></span> Crear Hospital</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!cargarHosp">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h3>Hospitales registrados ( <small>{{ totalRegistros }}</small> )</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let hosp of hospital">
+                            <td class="w70">
+                                <img (click)="mostrarModal(hosp._id)" [src]="hosp.img | imagen:'hospitales'" alt="" class="img-50 img-circle pointer">
+                            </td>
+                            <td>
+                                <input type="text" name="nombre" [(ngModel)]="hosp.nombre" placeholder="Ingrese el nombre del hospital" class="form-control">
+                            </td>
+                            <td>
+                                <button class="btn btn-primary" (click)="actualizarHospital(hosp)"><span class="fa fa-save"></span></button>
+                                <button class="btn btn-danger" (click)="borrarHospital(hosp)"><span class="fa fa-trash-o"></span></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button (click)="paginacion(-5)" class="btn btn-secondary">Anterior</button>
+                <button (click)="paginacion(5)" class="btn btn-secondary">Siguiente</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -27,8 +27,8 @@ export class ImagenPipe implements PipeTransform {
         url += '/medicos/' + img;
         break;
       default:
-        console.log('¡Tipo de imagen no valida!');
-        url += 'usuarios/notfoud';
+        // console.log('¡Tipo de imagen no valida!');
+        url += '/usuarios/notfoud';
         break;
     }
 
